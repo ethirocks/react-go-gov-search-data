@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  backend:
+    build:
+      context: ./backend # Path to your backend Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: react-go-gov-search-data
+
+  frontend:
+    build:
+      context: ./frontend # Path to your frontend Dockerfile
+    ports:
+      - "3000:80"
+    container_name: react-frontend
+    depends_on:
+      - backend # Ensure backend starts before frontend
